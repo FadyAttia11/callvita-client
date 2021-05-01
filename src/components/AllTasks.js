@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react'
-import axios from 'axios'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import AddNewTask from './AddNewTask'
 import Task from './Task'
@@ -33,6 +33,7 @@ const AllTasks = (props) => {
         <div>
             <h1>AllTasks Page</h1>
             <AddNewTask />
+            <Link to="/">Back To Home Page</Link>
             {props.tasks.map((task) => <Task key={task.id} {...task} />)}
             {/* {displayTasks()} */}
         </div>
