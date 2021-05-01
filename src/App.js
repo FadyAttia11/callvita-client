@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router } from "react-router-dom";
+import { Provider } from 'react-redux'
+import Routes from "./components/Routes";
+import Navbar from "./components/Navbar";
 
-function App() {
+import configureStore from './store/configureStore'
+import { addTask, fetchTasks } from './actions/tasks'
+import { saveTasks } from './reducers/tasks';
+
+const store = configureStore()
+
+// console.log("our store: ", store.getState())
+store.subscribe(() => { console.log("our store: ", store.getState()) })
+
+// store.dispatch(addTask({ title: 'trying', description: 'hard' }))
+store.dispatch(fetchTasks())
+// store.dispatch(saveTasks())
+
+const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <Navbar />
+        <Routes />
+      </Router>
+    </Provider>
+
   );
 }
 
