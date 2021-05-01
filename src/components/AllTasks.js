@@ -8,10 +8,19 @@ const AllTasks = (props) => {
 
     return (
         <div>
-            <h1>AllTasks Page</h1>
+            <div className="jumbotron text-center">
+                <h1>See All Tasks Here</h1>
+                <Link to="/" className="mt-3">Back To Home Page</Link>
+            </div>
+
             <AddNewTask />
-            <Link to="/">Back To Home Page</Link>
-            {props.tasks.map((task) => <Task key={task.id} {...task} />)}
+            
+            <div className="container mt-5">
+            <h2>All Tasks</h2>
+            <div className="row">
+                {props.tasks.map((task) => <Task key={task.id} {...task} />)}
+            </div>
+            </div>
         </div>
     )
 }

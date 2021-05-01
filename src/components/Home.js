@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Task from './Task'
+import SearchedTasksApi from '../context/SearchedTasksApi'
 
 const Home = () => {
 
@@ -16,27 +17,36 @@ const Home = () => {
     }
 
     const renderSearchedTasks = () => (
-        searchedTasks.map((task) => <Task key={task.id} {...task} />)
+        searchedTasks.map((task) => <Task key={task.id} {...task} search="true" />)
     )
     
 
     return (
-        <div>
-            <h1>Home Page</h1>
-            <Link to="alltasks">View All Tasks</Link>
-            <h3>Search Available Tasks</h3>
-            <p>You Will Get The Task if the keyword you are searching with is on the title or the description of the task</p>
-            <form onSubmit={(e) => handleSearchingTasks(e)}>
-                <input 
-                    type="text" 
-                    placholder="Write Search Keyword" 
-                    value={keyword} 
-                    onChange={(e) => setKeyword(e.target.value)} 
-                />
-                <input type="submit" value="Search Now" />
-            </form>
-            {renderSearchedTasks()}
-        </div>
+        <SearchedTasksApi.Provider value={{ searchedTasks, setSearchedTasks }}>
+            <div className="jumbotron text-center">
+                <h1>Callvita Task Management Home Page</h1>
+                <Link to="alltasks" className="btn btn-primary mt-3">View All Tasks</Link>
+            </div>
+            
+            
+            <div className="container">
+                <h3>Search Available Tasks</h3>
+                <p>You Will Get The Task if the keyword you are searching with is on the title or the description of the task</p>
+                <form onSubmit={(e) => handleSearchingTasks(e)}>
+                    <input 
+                        type="text" 
+                        placholder="Write Search Keyword" 
+                        className="form-control"
+                        value={keyword} 
+                        onChange={(e) => setKeyword(e.target.value)} 
+                    />
+                    <input type="submit" value="Search Now" className="btn btn-info mt-3" />
+                </form>
+                <div className="row">
+                    {renderSearchedTasks()}
+                </div>
+            </div>
+            </SearchedTasksApi.Provider>
     )
 }
 

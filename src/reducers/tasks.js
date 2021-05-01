@@ -1,4 +1,3 @@
-import axios from 'axios'
 
 // Tasks Reducer
 const tasksReducerDefaultState = []

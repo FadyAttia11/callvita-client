@@ -10,15 +10,31 @@ const AddNewTask = (props) => {
     const handleSubmitForm = (e) => {
         e.preventDefault()
         props.dispatch(saveTasks({ title, description }))
+        setTitle('')
+        setDescription('')
     }
 
     return (
-        <form onSubmit={(e) => handleSubmitForm(e)}>
-            <h2>Add New Task</h2>
-            <input type="text" placeholder="task title" value={title} onChange={(e) => setTitle(e.target.value)} />
-            <input type="text" placeholder="task description" value={description} onChange={(e) => setDescription(e.target.value)} />
-            <input type="submit" value="Add Task" />
-        </form>
+        <div className="container">
+            <form onSubmit={(e) => handleSubmitForm(e)}>
+                <h2>Add New Task</h2>
+                <input 
+                    type="text" 
+                    placeholder="Task Title" 
+                    className="form-control mt-3"
+                    value={title} 
+                    onChange={(e) => setTitle(e.target.value)} 
+                />
+                <input 
+                    type="text" 
+                    placeholder="Task Description" 
+                    className="form-control mt-3"
+                    value={description} 
+                    onChange={(e) => setDescription(e.target.value)} 
+                />
+                <input type="submit" className="btn btn-primary mt-3" value="Add Task" />
+            </form>
+        </div>
     )
 }
 

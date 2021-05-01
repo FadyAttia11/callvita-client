@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import queryString from 'query-string'
 import { updateTasks } from '../actions/tasks';
 
@@ -27,27 +27,38 @@ const EditTask = (props) => {
     }
 
     return (
-        <form onSubmit={(e) => handleEditingTask(e)}>
-            <label htmlFor="title">Task Title</label>
-            <input 
-                type="text" 
-                id="title" 
-                placeholder="Edit Task Title" 
-                value={title} 
-                onChange={(e) => setTitle(e.target.value)} 
-            />
+        <div>
+            <div className="jumbotron text-center">
+                <h1>Edit Specific Task</h1>
+                <Link to="/alltasks" className="mt-3">Back To All Tasks Page</Link>
+            </div>
+            <div className="container">
+                <h1>Edit Task</h1>
+                <form onSubmit={(e) => handleEditingTask(e)}>
+                    <label htmlFor="title">Task Title</label>
+                    <input 
+                        type="text" 
+                        id="title" 
+                        placeholder="Edit Task Title" 
+                        className="form-control mb-4"
+                        value={title} 
+                        onChange={(e) => setTitle(e.target.value)} 
+                    />
 
-            <label htmlFor="description">Task Description</label>
-            <input 
-                type="text" 
-                id="description" 
-                placeholder="Edit Task Description" 
-                value={description} 
-                onChange={(e) => setDescription(e.target.value)} 
-            />
+                    <label htmlFor="description">Task Description</label>
+                    <input 
+                        type="text" 
+                        id="description" 
+                        placeholder="Edit Task Description"
+                        className="form-control mb-4" 
+                        value={description} 
+                        onChange={(e) => setDescription(e.target.value)} 
+                    />
 
-            <input type="submit" value="Edit This Task" />
-        </form>
+                    <input type="submit" value="Edit This Task" className="btn btn-info" />
+                </form>
+            </div>
+        </div>
     )
 }
 
