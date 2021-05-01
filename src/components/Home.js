@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Task from './Task'
@@ -7,22 +7,6 @@ const Home = () => {
 
     const [keyword, setKeyword] = useState('')
     const [searchedTasks, setSearchedTasks] = useState([])
-
-
-    // useEffect(() => {
-    //     const getAllTasks = async () => {
-    //         const tasks = await axios
-    //           .get("/api/tasks")
-    //           .then((response) => response.data);
-    //           setTasks(tasks);
-    //       };
-    //       getAllTasks();
-    // }, [])
-
-    // useEffect(() => {
-    //     console.log(tasks);
-    // }, [tasks])
-
 
     const handleSearchingTasks = async (e) => {
         e.preventDefault()

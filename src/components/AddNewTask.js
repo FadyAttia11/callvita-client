@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { saveTasks } from '../actions/tasks';
 
@@ -6,10 +6,6 @@ const AddNewTask = (props) => {
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-
-    // useEffect(() => {
-    //     console.log('props is:', props)
-    // },[props])
 
     const handleSubmitForm = (e) => {
         e.preventDefault()
