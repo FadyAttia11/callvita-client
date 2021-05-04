@@ -9,7 +9,7 @@ import { fetchTasks } from './actions/tasks'
 const store = configureStore()
 
 // console.log("our store: ", store.getState())
-store.subscribe(() => { console.log("our store: ", store.getState()) })
+// store.subscribe(() => { console.log("our store: ", store.getState()) })
 
 // store.dispatch(addTask({ title: 'new task', description: 'adding new task' }))
 store.dispatch(fetchTasks())

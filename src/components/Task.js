@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { deleteTasks } from '../actions/tasks';
@@ -10,7 +10,7 @@ const Task = (props) => {
 
     const deleteTask = () => {
         props.dispatch(deleteTasks(props.id))
-        if(props.search == "true") {
+        if(props.search === "true") {
             SearchedTasks.setSearchedTasks((prevTasks) => prevTasks.filter(task => task.id !== props.id))
         }
     }
